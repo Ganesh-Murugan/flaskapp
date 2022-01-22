@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+          margin: 0;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .topnav {
+          overflow: hidden;
+          background-color: #333;
+        }
+        
+        .topnav form ,a{
+          float: left;
+          color: #f2f2f2;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          font-size: 17px;
+        }
+        
+       .topnav input[type=submit] {
+        padding:5px 15px; 
+        background:#ccc; 
+        border:0 none;
+        cursor:pointer;
+        -webkit-border-radius: 5px;
+        border-radius: 5px; 
+        }
+        
+        .topnav form.active {
+          background-color: #04AA6D;
+          color: white;
+        }
+        
+        tr.border-bottom td {
+        border-bottom: 1pt solid #ff000d;
+        }
+        #tablestyle {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        #tablestyle td, #tablestyle th {
+        border: 1px solid #ddd;
+        padding: 8px;
+        }
+
+        #tablestyle tr:nth-child(even){background-color: #f2f2f2;}
+
+        #tablestyle tr:hover {background-color: #ddd;}
+
+        #tablestyle th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav">
+    <a aria-current="page" href="{{url_for('index')}}">Home</a>
+    <form method="post" >
+        {{ form.csrf_token }}
+        
+        {{ form.category }}
+        
+        
+        <input type="submit">
+    </form>
+
+    </div>
+    
+    {% block content %}
+        
+    {% endblock %}
+</body>
+</html>
