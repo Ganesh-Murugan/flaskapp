@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% block title %}
+    cats
+{% endblock %}
+{% block content %}
+<div class="form-style-5">
+<form method="post">
+    {{ form.hidden_tag() }}
+    {{ form.category_name.label() }}
+    {{ form.category_name() }}
+    {{ form.description.label() }}
+    {{ form.description() }}
+    {{ form.Submit() }}
+</form>
+</div>
+{% endblock %}
