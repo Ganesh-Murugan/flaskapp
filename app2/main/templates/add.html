@@ -4,7 +4,7 @@
 {% endblock %}
 {% block content %}
 <div class="form-style-5">
-<form method="post">
+<form method="post" action="{{url_for('add')}}">
     {{ form.hidden_tag() }}
     {{ form.category_name.label() }}
     {{ form.category_name() }}

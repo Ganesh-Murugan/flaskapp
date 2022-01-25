@@ -12,17 +12,13 @@
     <div class="topnav">
     <a aria-current="page" href="{{url_for('index')}}">Home</a>
     
-    <form method="post" class="topnav">
-        <select name="cat">
-          <option value="" selected disabled hidden>Choose category</option>
-          {% for o in x %}
-              <option value="{{ o.id }}">{{ o.category_name }}</option>
-              {% endfor %}
-        </select>
-        
-        <input type="submit">
-    </form>
     
+    <form method="post">
+      {{ form.csrf_token }}
+      {{ form.category }}
+      {{ form.subcate }}
+      <input type="submit">
+    </form>
     </div>
     <div class="navbar">
       <div class="dropdown">
@@ -30,7 +26,7 @@
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-          <a href="{{url_for('add')}}">category</a>
+          <a href="#">category</a>
           <a href="#">Subcategory</a>
           <a href="#">Product</a>
         </div>
@@ -62,5 +58,23 @@
     {% block content %}
         
     {% endblock %}
+    <script>
+      let cate_select = document.getElementById('category');
+      let subcate_select = document.getElementById('subcate');
+      
+      cate_select.onchange = function() {
+        cate = cate_select.value;
+        fetch('/subcate/' + cate).then(function(response){
+          response.json().then(function(data){
+            let optionHTML = '';
+            for (let subcate of data.subcates){
+              optionHTML += '<option value="' + subcate.id + '">' + subcate.subcate_name + '</option>';
+
+            }
+             subcate_select.innerHTML = optionHTML;
+          });
+        });
+      }
+    </script>
 </body>
 </html>

@@ -28,5 +28,5 @@ class Product(db.Model):
     category_of = db.Column(db.Integer(), db.ForeignKey('category.id'))
     subcate_of = db.Column(db.Integer(), db.ForeignKey('subcate.id'))
 
-    def __repr__(self) -> str:
-        return f'Item {self.product_name}'
+    # def __repr__(self) -> str:
+    #     return f'Item {self.product_name}'
